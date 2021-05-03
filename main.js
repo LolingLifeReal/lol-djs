@@ -37,20 +37,7 @@ client.on('message', message =>{
         client.commands.get('china').execute(message, args)
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
-    }command(client, 'ban', message => {
-        const { member, mentions } = message
-
-        if (
-            member.hasPermission('ADMINISTRATOR') ||
-            member.hasPermission('BAN_MEMBERS')
-         ) {
-            console.log('Works')
-         } else {
-             message.channel.send(
-                 `<@${member.id}> You do not have permmision to use this command!` 
-            ) 
-         }
-    })
+    }
 });
 
 client.on("ready", () => {
