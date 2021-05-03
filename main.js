@@ -46,7 +46,9 @@ client.on('message', message =>{
          ) {
             console.log('Works')
          } else {
-             message.channel.send(`<@${member.id}> You do not have permmision to use this command!` ) 
+             message.channel.send(
+                 `<@${member.id}> You do not have permmision to use this command!` 
+            ) 
          }
     })
 });
