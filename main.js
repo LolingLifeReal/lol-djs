@@ -73,7 +73,7 @@ client.on("guildDelete", () => {
 //app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 
 
-client.login('Lh1eHfBa0P-9aaVsy786rhfu6xzOY_g9'); 
+client.login(process.env.TOKEN); 
 
 
 
