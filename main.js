@@ -42,18 +42,17 @@ client.on('message', message =>{
 
 client.on("ready", () => {
   console.log('Dog Shit!')
-  //  client.user.setActivity("Watching " + client.guilds.cache.size + " servers");
-  client.user.setActivity('Prefix >>', ({type: "WATCHING"}));
+    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>");
 });
 
 client.on("guildCreate", () => {
     // Fired every time the bot is added to a new server
-    //client.user.setActivity("Watching "+ client.guilds.cache.size +' servers');
+    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers');
 });
 
 client.on("guildDelete", () => {
     // Fired every time the bot is removed from a server
-    //client.user.setActivity("Watching "+ client.guilds.cache.size +" servers");
+    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers");
 });
 
 
