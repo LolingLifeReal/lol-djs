@@ -37,7 +37,7 @@ client.on('message', message =>{
         client.commands.get('china').execute(message, args)
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
-    }     if (message.content === 'meme') {
+    }else if (message.content === 'meme') {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/memes/random/.json').then(response => {
             let content = JSON.parse(response.body);
