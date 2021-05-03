@@ -23,13 +23,13 @@ client.on('message', message =>{
 
     if(command === 'ping'){
       client.commands.get('ping').execute(message, args);
-    }else if (command == 'e'){
+    }else if (command === 'e'){
         message.channel.send('bruh get lost ty!');
-    }else if (command == 'youtube'){
+    }else if (command === 'youtube'){
        client.commands.get('youtube').execute(message, args)
-    }else if (command == 'twitter'){
+    }else if (command === 'twitter'){
         client.commands.get('twitter').execute(message, args)
-    }else if (command == 'invite'){
+    }else if (command === 'invite'){
         client.commands.get('invite').execute(message, args)
     }else if (command === 'fat'){
         client.commands.get('fat').execute(message, args)
@@ -37,7 +37,7 @@ client.on('message', message =>{
         client.commands.get('china').execute(message, args)
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
-    }else if (message.content === 'meme') {
+    }else if (command === 'meme') {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/memes/random/.json').then(response => {
             let content = JSON.parse(response.body);
