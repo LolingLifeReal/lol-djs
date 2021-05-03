@@ -37,30 +37,18 @@ client.on('message', message =>{
         client.commands.get('china').execute(message, args)
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
-    }  if (message.content.startsWith(prefix+"ban"))
-    if (message.member.hasPermission("BAN_MEMBERS")) {
-      let member = message.mentions.members.first()
-      if (!member) message.channel.send("Please Mention Someone")
-      else {
-        member.ban().then(mem => {
-          message.channel.send(`Banned ${mem.user.username}!`)
-        })
-      }
-    } else {
-      message.reply("You Dont Have Permission To Do That!")
-    }
- if (message.content.startsWith(prefix+"kick"))
-    if (message.member.hasPermission("KICK_MEMBERS")) {
-      let member = message.mentions.members.first()
-      if (!member) message.channel.send("Please Mention Someone")
-      else {
-        member.kick().then(mem => {
-          message.channel.send(`Kicked ${mem.user.username}!`)
-        })
-      }
-    } else {
-      message.reply("You Dont Have Permission To Do That!")
-    }
+    }command(client, 'ban', message => {
+        const { member, mentions } = message
+
+        if (
+            member.hasPermission('ADMINISTRATOR') ||
+            member.hasPermission('BAN_MEMBERS')
+         ) {
+            console.log('Works')
+         } else {
+             message.channel.send(`<@${member.id}> You do not have permmision to use this command!` ) 
+         }
+    })
 });
 
 client.on("ready", () => {
