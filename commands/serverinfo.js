@@ -6,18 +6,9 @@ module.exports = {
               .setColor("Dark violet")
               .setTitle("Server Info")
               .setDescription(`${message.guild}.`)
-              .addField("Member Count", `This Server Has ${message.guild.memberCount} members!`)
-              .addField("Role Count", `This Server Has ${message.guild.roles.cache.size} Roles!`)
-              .addField("Emoji Count", `This Server Has ${message.guild.emojis.cache.size} emoji's!`)
+              .addField("Member Count", `This Server Has ${message.guild.memberCount} Members.`)
+              .addField("Role Count", `This Server Has ${message.guild.roles.cache.size} Roles.`)
+              .addField("Emoji Count", `This Server Has ${message.guild.emojis.cache.size} Emoji's.`)
             message.channel.send(embed)
         }
-    }
-            
-        
-    
-
-
-
-
-
- 
+    } 

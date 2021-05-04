@@ -30,7 +30,7 @@ client.on('message', message =>{
     }else if (command === 'twitter'){
         client.commands.get('twitter').execute(message, args)
     }else if (command === 'invite'){
-        client.commands.get('invite').execute(message, args)
+        client.commands.get('invite').execute(message, args, Discord)
     }else if (command === 'fat'){
         client.commands.get('fat').execute(message, args)
     }else if (command === 'china'){
@@ -76,7 +76,7 @@ client.on("guildDelete", () => {
 
 
 client.login(process.env.TOKEN); 
-
+//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
 
 
 
