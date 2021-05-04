@@ -1,13 +1,13 @@
 module.exports = {
   name: 'invite',
-  description: "This command sends my invite",
+  description: "This command sends my invite me",
   execute(message, args, Discord){
       const embed = new Discord.MessageEmbed()
             .setColor("Dark violet")
-            .setTitle("Click on me to invite")
+            .setTitle("Lol Bot Invite")
             .setDescription("Here is my invite link! Enjoy!")
             .setURL('https://discord.com/oauth2/authorize?client_id=820760544318980096&scope=bot&permissions=2147483647')
-
+            .addField('https://discord.com/oauth2/authorize?client_id=820760544318980096&scope=bot&permissions=2147483647')
             
             message.channel.send(embed)
       }
