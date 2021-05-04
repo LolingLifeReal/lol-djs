@@ -7,7 +7,7 @@ module.exports = {
             .setTitle("Lol Bot Invite")
             .setDescription("Here is my invite link! Enjoy!")
             .setURL('https://discord.com/oauth2/authorize?client_id=820760544318980096&scope=bot&permissions=2147483647')
-            .addField('https://discord.com/oauth2/authorize?client_id=820760544318980096&scope=bot&permissions=2147483647')
+            .addField("Invite Link", `https://discord.com/oauth2/authorize?client_id=820760544318980096&scope=bot&permissions=2147483647`)
             
             message.channel.send(embed)
       }
