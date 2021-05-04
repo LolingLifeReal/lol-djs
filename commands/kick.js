@@ -3,10 +3,9 @@ module.exports = {
     description: "This command kicks a member!",
     execute(message, args){
         const target = message.mentions.users.first();
-        if (message.content.startsWith(prefix+"kick"))
         if (message.member.hasPermission("KICK_MEMBERS")) {
           let member = message.mentions.members.first()
-          if (!member) message.channel.send("Please Mention Someone")
+          if (!member) message.reply("Please Mention Someone")
           else {
             member.kick().then(mem => {
               message.channel.send(`Kicked ${mem.user.username}!`)

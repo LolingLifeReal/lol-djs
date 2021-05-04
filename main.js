@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const prefix = '>>';
+const prefix = ';';
 
 const fs = require('fs');
 
@@ -39,22 +39,26 @@ client.on('message', message =>{
         client.commands.get('pog').execute(message, args)
     }else if (command === 'serverinfo'){
         client.commands.get('serverinfo').execute(message, args, Discord)
+    }else if (command == 'kick'){
+         client.commands.get('kick').execute(message, args)
+    }else if (command == 'ban'){
+        client.commands.get('ban').execute(message, args)
     }
 });
 
 client.on("ready", () => {
   console.log('Dog Shit!')
-    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>");
+    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>" +" , Ban And Kick Commands Are Here!");
 });
 
 client.on("guildCreate", () => {
     // Fired every time the bot is added to a new server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers, PREFIX >>');
+    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers, PREFIX >>' +" , Ban And Kick Commands Are Here!");
 });
 
 client.on("guildDelete", () => {
     // Fired every time the bot is removed from a server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers, PREFIX >>");
+    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers, PREFIX >>" +" , Ban And Kick Commands Are Here!");
 });
 
 
