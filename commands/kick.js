@@ -5,7 +5,7 @@ module.exports = {
         const target = message.mentions.users.first();
         if (message.member.hasPermission("KICK_MEMBERS")) {
           let member = message.mentions.members.first()
-          if (!member) message.reply("Please Mention Someone")
+          if (!member) message.reply("Please Mention The User You Want To Kick!")
           else {
             member.kick().then(mem => {
               message.channel.send(`Kicked ${mem.user.username}!`)
