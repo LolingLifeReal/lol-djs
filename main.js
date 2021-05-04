@@ -38,7 +38,7 @@ client.on('message', message =>{
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
     }else if (command === 'serverinfo'){
-        client.commands.get('serverinfo').execute(message, args)
+        client.commands.get('serverinfo').execute(message, args, Discord)
     }
 });
 

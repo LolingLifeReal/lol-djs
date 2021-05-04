@@ -1,9 +1,8 @@
 module.exports = {
     name: 'serverinfo',
     description: "This command shows the info of the server",
-    execute(message, args){
-        const target = message.mentions.users.first();
-        if (message.content === prefix+"serverinfo") {
+    execute(message, args, Discord){
+        const embed = new Discord.MessageEmbed()
             let embed = new Discord.MessageEmbed()
               .setColor("BLUE")
               .setTitle("Server Info")
@@ -14,7 +13,6 @@ module.exports = {
             message.channel.send(embed)
         }
     }
- }
             
         
     
