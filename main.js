@@ -37,6 +37,8 @@ client.on('message', message =>{
         client.commands.get('china').execute(message, args)
     }else if (command === 'poggers'){
         client.commands.get('pog').execute(message, args)
+    }else if (command === 'Server ' + 'Info'){
+        client.commands.get('serverinfo').execute(message, args)
     }
 });
 
