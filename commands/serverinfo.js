@@ -9,7 +9,7 @@ module.exports = {
               .addField("Member Count", `This Server Has ${message.guild.memberCount} Members.`)
               .addField("Role Count", `This Server Has ${message.guild.roles.cache.size} Roles.`)
               .addField("Emoji Count", `This Server Has ${message.guild.emojis.cache.size} Emoji's.`)
-              .addField("Server Owner", `The Owner of this server is m${message.guild.owner}`) 
+              .addField("Server Owner", `The Owner of this server is ${message.guild.owner}`) 
             message.channel.send(embed)
         }
     } 
