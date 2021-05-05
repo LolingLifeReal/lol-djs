@@ -1,8 +1,8 @@
-module.exports= {
+module.exports = {
     name: 'help',
     description: "This command shows all the comands",
     execute(message, args, Discord){
-        const embed = new Discord.MessageEmbed()
+        const newEmbed = new Discord.MessageEmbed()
         .setColor("Dark violet")
         .setTitle("Here are the list of commands")
         .addField("Serverinfo", `>>ServerInfo`)
@@ -16,9 +16,7 @@ module.exports= {
         .addField("China Meme (Trump)", `>>China`)
         .addField("Pog", `>>Poggers`)
         .addField("Serverinfo", `>>ServerInfo`)
-        .addFooter("Commands can be put in uppercase or lower case.")
-
-
-        message.channel.send(embed)
+        .setDescription("You don't have to put the commands in the caps they are in, commands on me can be lower case or upper case")
+        message.channel.send(newEmbed)
     }
 }
