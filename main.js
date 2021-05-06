@@ -73,8 +73,8 @@ client.on("guildDelete", () => {
 //app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//client.login(process.env.TOKEN); 
-client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+client.login(process.env.TOKEN); 
+//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
 
 
 
