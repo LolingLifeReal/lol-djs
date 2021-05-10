@@ -45,6 +45,8 @@ client.on('message', message =>{
         client.commands.get('ban').execute(message, args)
     }else if (command === 'help'){
         client.commands.get('help').execute(message, args, Discord)
+    }else if (command === 'purge'){
+        client.commands.get('purge').execute(message, args, Discord)
     }
 });
 
