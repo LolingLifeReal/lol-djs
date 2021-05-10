@@ -45,6 +45,11 @@ client.on('message', message =>{
         client.commands.get('ban').execute(message, args)
     }else if (command === 'help'){
         client.commands.get('help').execute(message, args, Discord)
+<<<<<<< HEAD
+=======
+    }else if (command === 'purge'){
+        client.commands.get('purge').execute(message, args, client, Discord)
+>>>>>>> parent of ad42bc8 (e)
     }
 });
 
@@ -73,9 +78,14 @@ client.on("guildDelete", () => {
 //app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 //client.login(process.env.TOKEN); 
 client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
 
 
+=======
+client.login(process.env.TOKEN); 
+//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+>>>>>>> parent of ad42bc8 (e)
 
 
