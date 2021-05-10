@@ -46,7 +46,7 @@ client.on('message', message =>{
     }else if (command === 'help'){
         client.commands.get('help').execute(message, args, Discord)
     }else if (command === 'purge'){
-        client.commands.get('purge').execute(message, args, Discord)
+        client.commands.get('purge').execute(message, args, client, Discord)
     }
 });
 
@@ -77,8 +77,8 @@ client.on("guildDelete", () => {
 
 
 
-client.login(process.env.TOKEN); 
-//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+//client.login(process.env.TOKEN); 
+client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
 
 
 

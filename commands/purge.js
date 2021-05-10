@@ -2,7 +2,7 @@ module.exports = {
     name: 'purge',
     permissions: ["MANAGE_MESSAGES",],
     description: "Clear messages",
-    async execute(message, args, cmd, client, Discord){
+    async execute(message, args, client, Discord){
         if(!args[0]) return message.reply ("Please enter the amount of messages you want to clear!");
         if(isNaN(args[0])) return message.reply("please enter a real number!");
 
