@@ -6,6 +6,8 @@ const prefix = '>>';
 
 const fs = require('fs');
 
+const got = require('got');
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -47,22 +49,24 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, args, Discord)
     }else if (command === 'purge'){
         client.commands.get('purge').execute(message, args, client, Discord)
+    }else if (command === 'meme'){//else if (command === 'meme') {
+        client.commands.get('meme').execute(message, args, client, Discord)
     }
 });
 
 client.on("ready", () => {
   console.log('Dog Shit!')
-    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>" +" , Ban And Kick Commands Are Here!");
+    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>" +" , MEME COMMAND IS HERE!");
 });
 
 client.on("guildCreate", () => {
     // Fired every time the bot is added to a new server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers, PREFIX >>' +" , Ban And Kick Commands Are Here!");
+    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers, PREFIX >>' +" , MEME COMMAND IS HERE!");
 });
 
 client.on("guildDelete", () => {
     // Fired every time the bot is removed from a server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers, PREFIX >>" +" , Ban And Kick Commands Are Here!");
+    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers, PREFIX >>" +" , MEME COMMAND IS HERE!");
 });
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
