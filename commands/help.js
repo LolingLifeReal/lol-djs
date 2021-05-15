@@ -16,7 +16,6 @@ module.exports = {
         .addField("Fat meme", `>>Fat`)
         .addField("China Meme (Trump)", `>>China`)
         .addField("Pog", `>>Poggers`)
-        .addField("Serverinfo", `>>ServerInfo`)
         .addField("Meme", `>>Meme`)
         .setDescription("You don't have to put the commands in the caps they are in, commands on me can be lower case or upper case")
         message.channel.send(newEmbed)
