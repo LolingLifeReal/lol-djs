@@ -51,12 +51,14 @@ client.on('message', message =>{
         client.commands.get('purge').execute(message, args, client, Discord)
     }else if (command === 'meme'){
         client.commands.get('meme').execute(message, args, client, Discord)
+    }else if (command === 'eval'){
+        client.commands.get('eval').execute(client, message, args)
     }
 });
 
 client.on("ready", () => {
   console.log('Dog Shit! ' + `${client.user.tag}`)
-    client.user.setActivity("Watching " + client.guilds.cache.size + " servers, PREFIX >>" +" , MEME COMMAND IS HERE!");
+    client.user.setActivity(">>Help In " + client.guilds.cache.size + " Guilds.");
 });
 
 client.on("guildCreate", () => {
