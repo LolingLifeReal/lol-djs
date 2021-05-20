@@ -17,6 +17,8 @@ module.exports = {
         .addField("China Meme (Trump)", `>>China`)
         .addField("Pog", `>>Poggers`)
         .addField("Meme", `>>Meme`)
+        .addField("Remind", `>>Remind {Time} {Reminder}`)
+        .addField("ChangeLog", `>>Changelog (**NOT OUT YET! Coming soon :D**)`)
         .setDescription("You don't have to put the commands in the caps they are in, commands on me can be lower case or upper case")
         message.channel.send(newEmbed)
     }

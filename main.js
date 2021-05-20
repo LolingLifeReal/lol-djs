@@ -7,8 +7,13 @@ const prefix = '>>';
 const fs = require('fs');
 
 const got = require('got');
+const { connect } = require('http2');
+
+const mongoose = require('mongoose');
 
 client.commands = new Discord.Collection();
+
+mongoose.connect('mongodb+srv://LolingLife:garimanb123@lolbot.za8tv.mongodb.net/Data', {useNewUrlParser: true, useUnifiedTopology: true})
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
@@ -51,8 +56,10 @@ client.on('message', message =>{
         client.commands.get('purge').execute(message, args, client, Discord)
     }else if (command === 'meme'){
         client.commands.get('meme').execute(message, args, client, Discord)
-    }else if (command === 'eval'){
-        client.commands.get('eval').execute(client, message, args)
+    }else if (command === 'send'){
+        client.commands.get('GuildOwnerMessage').execute(client, message, args)
+    }else if (command === 'remind'){
+        client.commands.get('remind').execute(message, args)
     }
 });
 
@@ -63,12 +70,12 @@ client.on("ready", () => {
 
 client.on("guildCreate", () => {
     // Fired every time the bot is added to a new server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +' servers, PREFIX >>' +" , MEME COMMAND IS HERE!");
+    client.user.setActivity(">>Help In " + client.guilds.cache.size + " Guilds.");
 });
 
 client.on("guildDelete", () => {
     // Fired every time the bot is removed from a server
-    client.user.setActivity("Watching "+ client.guilds.cache.size +" servers, PREFIX >>" +" , MEME COMMAND IS HERE!");
+    client.user.setActivity(">>Help In " + client.guilds.cache.size + " Guilds.");
 });
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -85,6 +92,6 @@ client.on("guildDelete", () => {
 
 client.login(process.env.TOKEN); 
 //client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
-
+//client.login('ODIwNzYwNTQ0MzE4OTgwMDk2.YE520g.Vaj5rkKjoOGsmcyNBHYPR69_7V0')
 
 
