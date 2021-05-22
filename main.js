@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+
 const { prototype } = require('events');
 
 const client = new Discord.Client();
@@ -13,10 +14,13 @@ const { connect } = require('http2');
 
 const mongoose = require('mongoose');
 
-client.commands = new Discord.Collection();
+//varibles end
 
+client.commands = new Discord.Collection();
+//mongoose
 mongoose.connect('mongodb+srv://LolingLife:garimanb123@lolbot.za8tv.mongodb.net/Data', {useNewUrlParser: true, useUnifiedTopology: true})
 
+//Command Handler
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
     const command  = require(`./commands/${file}`);
@@ -66,7 +70,9 @@ client.on('message', message =>{
           client.commands.get('play').execute(message, args)
     }else if (command === 'leave'){
         client.commands.get('leave').execute(message, args)
-  }
+    }else if (command === 'nsfw'){
+        client.commands.get('nsfw').execute(message, args, client, Discord)
+    }
 });
 
 client.on("ready", () => {
