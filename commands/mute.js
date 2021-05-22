@@ -1,33 +1,58 @@
-const ms = require('ms');
-module.exports = {
-    name: 'mute',
-    description: "This mutes a member",
-    execute(message, args) {
-        const target = message.mentions.users.first();
-        if (target) {
+var Discord = require('discord.js');
+var ms = require('ms');
 
-            let mainRole = message.guild.roles.cache.find(role => role.name === 'member');
-            let muteRole = message.guild.roles.cache.find(role => role.name === 'mute');
+exports.run = async(client, msg, args) => {
+    if(!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You can\'t use that!');
 
-            let memberTarget = message.guild.members.cache.get(target.id);
+    var user = msg.mentions.users.first();
+    if(!user) return msg.reply('You didn\'t mention anyone!');
 
-            if (!args[1]) {
-                memberTarget.roles.remove(mainRole.id);
-                memberTarget.roles.add(muteRole.id);
-                message.channel.send(`<@${memberTarget.user.id}> has been muted`);
-                return
-            }
-            memberTarget.roles.remove(mainRole.id);
-            memberTarget.roles.add(muteRole.id);
-            message.channel.send(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}`);
+    var member;
 
-            setTimeout(function () {
-                memberTarget.roles.remove(muteRole.id);
-                memberTarget.roles.add(mainRole.id);
-            }, ms(args[1]));
-        } else {
-            message.channel.send('Cant find that member!');
-        }
+    try {
+        member = await msg.guild.members.fetch(user);
+    } catch(err) {
+        member = null;
     }
-}
 
+    if(!member) return msg.reply('They aren\'t in the server!');
+    if(member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You cannot mute that person!');
+
+    var rawTime = args[1];
+    var time = ms(rawTime);
+    if(!time) return msg.reply('You didn\'t specify a time!');
+
+    var reason = args.splice(2).join(' ');
+    if(!reason) return msg.reply('You need to give a reason!');
+
+    var channel = msg.guild.channels.cache.find(c => c.name === 'potato');
+
+    var log = new Discord.MessageEmbed()
+    .setTitle('User Muted')
+    .addField('User:', user, true)
+    .addField('By:', msg.author, true)
+    .addField('Expires:', rawTime)
+    .addField('Reason:', reason)
+    channel.send(log);
+
+    var embed = new Discord.MessageEmbed()
+    .setTitle('You were muted!')
+    .addField('Expires:', rawTime, true)
+    .addField('Reason:', reason, true);
+
+    try {
+        user.send(embed);
+    } catch(err) {
+        console.warn(err);
+    }
+
+    var role = msg.guild.roles.cache.find(r => r.name === 'Muted');
+
+    member.roles.add(role);
+
+    setTimeout(async() => {
+        member.roles.remove(role);
+    }, time);
+
+    msg.channel.send(`**${user}** has been muted by **${msg.author}** for **${rawTime}**!`);
+}

@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { prototype } = require('events');
 
 const client = new Discord.Client();
 
@@ -7,6 +8,7 @@ const prefix = '>>';
 const fs = require('fs');
 
 const got = require('got');
+
 const { connect } = require('http2');
 
 const mongoose = require('mongoose');
@@ -60,7 +62,11 @@ client.on('message', message =>{
         client.commands.get('GuildOwnerMessage').execute(client, message, args)
     }else if (command === 'remind'){
         client.commands.get('remind').execute(message, args)
-    }
+    }else if (command === 'play'){
+          client.commands.get('play').execute(message, args)
+    }else if (command === 'leave'){
+        client.commands.get('leave').execute(message, args)
+  }
 });
 
 client.on("ready", () => {
@@ -89,9 +95,23 @@ client.on("guildDelete", () => {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+mongoose.connect(process.env.mongoDbDB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    userFindAndModify: false,
+})
+.then(() => {
+    console.log("Connected to DataBAse SKEEEEEEEEEEEET");
+})
+.catch((err) => {
+    console.log(err);
+})
 
-client.login(process.env.TOKEN); 
-//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
-//client.login('ODIwNzYwNTQ0MzE4OTgwMDk2.YE520g.Vaj5rkKjoOGsmcyNBHYPR69_7V0')
+
+
+
+//client.login(process.env.TOKEN); 
+client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc') //This is test bot
+
 
 
