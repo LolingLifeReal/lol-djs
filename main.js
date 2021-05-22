@@ -72,6 +72,8 @@ client.on('message', message =>{
         client.commands.get('leave').execute(message, args)
     }else if (command === 'nsfw'){
         client.commands.get('nsfw').execute(message, args, client, Discord)
+    }else if (command === 'server'){
+        client.commands.get('server').execute(message, args)
     }
 });
 
