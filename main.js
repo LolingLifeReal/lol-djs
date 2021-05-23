@@ -74,8 +74,8 @@ client.on('message', message =>{
         client.commands.get('nsfw').execute(message, args, client, Discord)
     }else if (command === 'server'){
         client.commands.get('server').execute(message, args)
-    }else if (command === 'nsfw'){
-        client.commands.get('nsfw').execute(message, args, client, Discord)
+    }else if (command === 'hentai'){
+        client.commands.get('hentai').execute(message, args, client, Discord)
     }
 });
 
@@ -120,8 +120,8 @@ mongoose.connect(process.env.mongoDbDB, {
 
 
 
-client.login(process.env.TOKEN); 
-//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc') //This is test bot
+//client.login(process.env.TOKEN); 
+client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc') //This is test bot
 
 
 
