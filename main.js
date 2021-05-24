@@ -126,8 +126,10 @@ mongoose.connect(process.env.mongoDbDB, {
 
 
 
-//client.login(process.env.TOKEN); 
-client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+client.login(process.env.TOKEN); 
+//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+
+
 //This is test bot ^^
 
 
