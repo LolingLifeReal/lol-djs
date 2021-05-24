@@ -18,6 +18,7 @@ const mongoose = require('mongoose');
 //varibles end
 
 client.commands = new Discord.Collection();
+
 //mongoose
 mongoose.connect('mongodb+srv://LolingLife:garimanb123@lolbot.za8tv.mongodb.net/Data', {useNewUrlParser: true, useUnifiedTopology: true})
 
@@ -77,6 +78,8 @@ client.on('message', message =>{
         client.commands.get('server').execute(message, args)
     }else if (command === 'hentai'){
         client.commands.get('hentai').execute(message, args, client, Discord)
+    }else if (command === 'userinfo'){
+        client.commands.get('userinfo').execute(client, message, args, Discord)
     }
 });
 
