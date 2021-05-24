@@ -80,6 +80,8 @@ client.on('message', message =>{
         client.commands.get('hentai').execute(message, args, client, Discord)
     }else if (command === 'userinfo'){
         client.commands.get('userinfo').execute(client, message, args, Discord)
+    }else if (command === 'av'){
+        client.commands.get('avatar').execute(message, args, Discord, client)
     }
 });
 
