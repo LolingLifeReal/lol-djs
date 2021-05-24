@@ -20,8 +20,11 @@ module.exports = {
         .addField("Remind", `>>Remind {Time} {Reminder}`)
         .addField("Music", `>>Play {Music name} else >>leave (stop command isnt here yet sorry)`)
         .addField("ChangeLog", `>>Changelog (**NOT OUT YET! Coming soon :D**)`)
-        .addField("Nsfw", `>>Nsfw (Has to be a nsfw channel) )`)
+        .addField("Nsfw", `>>Nsfw or >>Hentai(Has to be a nsfw channel) )`)
+        .addField("Discord Server", `>>Server`)
         .setDescription("If you need help join the bot server **discord.gg/RkswMk6Bcs** .You don't have to put the commands in the caps they are in, commands on me can be lower case or upper case")
-        message.channel.send(newEmbed)
+        message.author.send(newEmbed)
+        message.channel.send('Sent to your dms!')
+        
     }
 }

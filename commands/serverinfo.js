@@ -14,7 +14,7 @@ module.exports = {
               .addField("Role Count", `This Server Has ${message.guild.roles.cache.size} Roles.`)
               .addField("Emoji Count", `This Server Has ${message.guild.emojis.cache.size} Emoji's.`)
               .addField("Server Owner", `The Owner of this server is ${message.guild.owner}`) 
-              .setImage(icon)
+              .setThumbnail(icon)
             message.channel.send(embed)
         }
     } 

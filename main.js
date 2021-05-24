@@ -1,3 +1,4 @@
+//varibles Start
 const Discord = require('discord.js');
 
 const { prototype } = require('events');
@@ -79,8 +80,11 @@ client.on('message', message =>{
     }
 });
 
+
+//Bot On
 client.on("ready", () => {
   console.log('Dog Shit! ' + `${client.user.tag}`)
+  //Bot Status
     client.user.setActivity(">>Help In " + client.guilds.cache.size + " Guilds.");
 });
 
@@ -93,7 +97,9 @@ client.on("guildDelete", () => {
     // Fired every time the bot is removed from a server
     client.user.setActivity(">>Help In " + client.guilds.cache.size + " Guilds.");
 });
+//bot status end
 
+//repl.it shit
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //const express = require('express');
 //const app = express();
@@ -104,7 +110,7 @@ client.on("guildDelete", () => {
 //app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+//Mongo connecting
 mongoose.connect(process.env.mongoDbDB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -116,12 +122,12 @@ mongoose.connect(process.env.mongoDbDB, {
 .catch((err) => {
     console.log(err);
 })
+//End
 
 
 
-
-client.login(process.env.TOKEN); 
-//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc') //This is test bot
-
+//client.login(process.env.TOKEN); 
+client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+//This is test bot ^^
 
 
