@@ -5,7 +5,7 @@ const { prototype } = require('events');
 
 const client = new Discord.Client();
 
-const prefix = '>>';
+const prefix = ';';
 
 const fs = require('fs');
 
@@ -15,73 +15,95 @@ const { connect } = require('http2');
 
 const mongoose = require('mongoose');
 
+require('dotenv').config();
+
+clientcommands = new Discord.Collection();
+
+clientaliases = new Discord.Collection();
+
+
+
 //varibles end
 
-client.commands = new Discord.Collection();
 
-//mongoose
-mongoose.connect('mongodb+srv://LolingLife:garimanb123@lolbot.za8tv.mongodb.net/Data', {useNewUrlParser: true, useUnifiedTopology: true})
+
 
 //Command Handler
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
     const command  = require(`./commands/${file}`);
 
-    client.commands.set(command.name, command);
+    clientcommands.set(command.name, command);
 }
  
+
+//message event
 client.on('message', message =>{
+    
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
+    
 
     if(command === 'ping'){
-      client.commands.get('ping').execute(message, args);
+      clientcommands.get('ping').execute(message, args);
     }else if (command === 'e'){
         message.channel.send('bruh get lost ty!');
     }else if (command === 'youtube'){
-       client.commands.get('youtube').execute(message, args)
+       clientcommands.get('youtube').execute(message, args)
     }else if (command === 'twitter'){
-        client.commands.get('twitter').execute(message, args)
+        clientcommands.get('twitter').execute(message, args)
     }else if (command === 'invite'){
-        client.commands.get('invite').execute(message, args, Discord)
+        clientcommands.get('invite').execute(message, args, Discord)
     }else if (command === 'fat'){
-        client.commands.get('fat').execute(message, args)
+        clientcommands.get('fat').execute(message, args)
     }else if (command === 'china'){
-        client.commands.get('china').execute(message, args)
+        clientcommands.get('china').execute(message, args)
     }else if (command === 'poggers'){
-        client.commands.get('pog').execute(message, args)
+        clientcommands.get('pog').execute(message, args)
     }else if (command === 'serverinfo'){
-        client.commands.get('serverinfo').execute(message, args, Discord)
+        clientcommands.get('serverinfo').execute(message, args, Discord)
     }else if (command === 'kick'){
-         client.commands.get('kick').execute(message, args)
+         clientcommands.get('kick').execute(message, args)
     }else if (command === 'ban'){
-        client.commands.get('ban').execute(message, args)
+        clientcommands.get('ban').execute(message, args)
     }else if (command === 'help'){
-        client.commands.get('help').execute(message, args, Discord)
+        clientcommands.get('help').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'purge'){
-        client.commands.get('purge').execute(message, args, client, Discord)
+        clientcommands.get('purge').execute(message, args, client, Discord)
     }else if (command === 'meme'){
-        client.commands.get('meme').execute(message, args, client, Discord)
-    }else if (command === 'send'){
-        client.commands.get('GuildOwnerMessage').execute(client, message, args)
+        clientcommands.get('meme').execute(message, args, client, Discord)
     }else if (command === 'remind'){
-        client.commands.get('remind').execute(message, args)
+        clientcommands.get('remind').execute(message, args)
     }else if (command === 'play'){
-          client.commands.get('play').execute(message, args)
+          clientcommands.get('play').execute(message, args)
     }else if (command === 'leave'){
-        client.commands.get('leave').execute(message, args)
+        clientcommands.get('leave').execute(message, args)
     }else if (command === 'nsfw'){
-        client.commands.get('nsfw').execute(message, args, client, Discord)
-    }else if (command === 'server'){
-        client.commands.get('server').execute(message, args)
+        clientcommands.get('nsfw').execute(message, args, client, Discord)
+    }else if (command === 'discordserver'){
+        clientcommands.get('server').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'hentai'){
-        client.commands.get('hentai').execute(message, args, client, Discord)
-    }else if (command === 'userinfo'){
-        client.commands.get('userinfo').execute(client, message, args, Discord)
+        clientcommands.get('hentai').execute(message, args, client, Discord)
+    }else if (command === 'whois'){
+        clientcommands.get('whois').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'av'){
-        client.commands.get('avatar').execute(message, args, Discord, client)
+        clientcommands.get('avatar').execute(message, args, Discord, client)
+    }else if (command === 'avatar'){
+        clientcommands.get('avatar').execute(message, args, Discord, client)
+    }else if(command === '8ball'){
+        clientcommands.get('8ball').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'roleinfo'){
+        clientcommands.get('roleinfo').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'covid'){
+        clientcommands.get('covid').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'say'){
+        clientcommands.get('say').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'slowmo'){
+        clientcommands.get('slowmo').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'socials'){
+        clientcommands.get('my_socials').execute(Discord, clientcommands, client, message, args)
     }
 });
 
@@ -105,35 +127,19 @@ client.on("guildDelete", () => {
 //bot status end
 
 
-//repl.it shit
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//const express = require('express');
-//const app = express();
-//const port = 3000;
-
-//app.get('/', (req, res) => res.send('Hello World!'));
-
-//app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//Mongo connecting
-mongoose.connect(process.env.mongoDbDB, {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     userFindAndModify: false,
+}).then(() => {
+    console.log(`Conected to mongodb BITCH FFS`);
+}).catch((err) => {
+    console.log(err)
 })
-.then(() => {
-    console.log("Connected to DataBAse SKEEEEEEEEEEEET");
-})
-.catch((err) => {
-    console.log(err);
-})
-//End
-
 
 
 client.login(process.env.TOKEN); 
-//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.Nm1SHJTeTCyJyLadJVx9XzpHGbc')
+//client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.uPWEY5fZm8Ore9ZOfrtPHJpEATo')
 
 
 //This is test bot ^^
