@@ -65,9 +65,9 @@ client.on('message', message =>{
     }else if (command === 'serverinfo'){
         clientcommands.get('serverinfo').execute(message, args, Discord)
     }else if (command === 'kick'){
-         clientcommands.get('kick').execute(message, args)
+         clientcommands.get('kick').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'ban'){
-        clientcommands.get('ban').execute(message, args)
+        clientcommands.get('ban').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'help'){
         clientcommands.get('help').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'purge'){
@@ -82,15 +82,13 @@ client.on('message', message =>{
         clientcommands.get('leave').execute(message, args)
     }else if (command === 'nsfw'){
         clientcommands.get('nsfw').execute(message, args, client, Discord)
-    }else if (command === 'discordserver'){
+    }else if (command === 'supportserver'){
         clientcommands.get('server').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'hentai'){
         clientcommands.get('hentai').execute(message, args, client, Discord)
     }else if (command === 'whois'){
         clientcommands.get('whois').execute(Discord, clientcommands, client, message, args)
     }else if (command === 'av'){
-        clientcommands.get('avatar').execute(message, args, Discord, client)
-    }else if (command === 'avatar'){
         clientcommands.get('avatar').execute(message, args, Discord, client)
     }else if(command === '8ball'){
         clientcommands.get('8ball').execute(Discord, clientcommands, client, message, args)
@@ -104,6 +102,8 @@ client.on('message', message =>{
         clientcommands.get('slowmo').execute(Discord, clientcommands, client, message, args)
     }else if(command === 'socials'){
         clientcommands.get('my_socials').execute(Discord, clientcommands, client, message, args)
+    }else if(command === 'unban'){
+        clientcommands.get('unban').execute(Discord, clientcommands, client, message, args)
     }
 });
 

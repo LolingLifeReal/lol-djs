@@ -1,8 +1,10 @@
 module.exports = {
     name: 'purge',
-    permissions: ["MANAGE_MESSAGES",],
     description: "Clear messages",
     async execute(message, args, client, Discord){
+
+        if (!message.member.hasPermission(["MANAGE_MESSAGES"])) return message.reply("You Dont Have Permission To Do That!") 
+        if (!message.guild.me.hasPermission(["MANAGE_MESSAGES"])) return message.channel.send("Bot need permissions!")
         if(!args[0]) return message.reply ("Please enter the amount of messages you want to clear!");
         if(isNaN(args[0])) return message.reply("please enter a real number!");
 
