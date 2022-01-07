@@ -142,6 +142,6 @@ client.login(process.env.TOKEN);
 //client.login('ODM4NTkyOTI4OTM3OTM0ODc5.YI9Whg.uPWEY5fZm8Ore9ZOfrtPHJpEATo')
 
 
-//This is test bot ^^
+//This is test bot broken^^
 
 
